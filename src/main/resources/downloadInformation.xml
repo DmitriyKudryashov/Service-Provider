@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="com.system.domain.DownloadInformation" table="download_information">
+
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="increment" />
+        </id>
+
+        <property name="downloadStart" column="download_start" type="java.sql.Date"/>
+        <property name="downloadEnd" column="download_end" type="java.sql.Date"/>
+        <property name="resultByte" column="result_byte" type="java.lang.Long"/>
+        <many-to-one name="user" class="com.system.domain.User" column="user_id" not-null="true"/>
+
+
+    </class>
+
+</hibernate-mapping>

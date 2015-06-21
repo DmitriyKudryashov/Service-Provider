@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="com.system.domain.User" table="user">
+
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="increment" />
+        </id>
+
+        <property name="name" column="name" type="java.lang.String"/>
+        <set name="downloadInformationSet" cascade="all"
+             inverse="false" lazy="false" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.system.domain.DownloadInformation" />
+        </set>
+
+    </class>
+
+</hibernate-mapping>

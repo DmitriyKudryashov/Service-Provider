@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="a250c595-b384-4d9b-8db5-b2143753f362">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="database1"/>
+    <table name="CONTACT" schema="" catalog="database1" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_NAME" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BIRTH_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_CONTACT_TEL_DETAIL_1" table="CONTACT_TEL_DETAIL" schema="" catalog="database1" columns="CONTACT_ID"/>
+      <index name="UQ_CONTACT_1" unique="true" columns="FIRST_NAME,LAST_NAME"/>
+    </table>
+    <table name="CONTACT_TEL_DETAIL" schema="" catalog="database1" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CONTACT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TEL_TYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TEL_NUMBER" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="FK_CONTACT_TEL_DETAIL_1" columns="CONTACT_ID" ref-table="CONTACT" ref-schema="" ref-catalog="database1" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UQ_CONTACT_TEL_DETAIL_1" unique="true" columns="CONTACT_ID,TEL_TYPE"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - database2@localhost" uuid="86f9c316-17c7-4e41-b561-db0c147efe0f">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="database2"/>
+    <table name="download_information" schema="" catalog="database2" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="download_start" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="download_end" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="result_byte" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_rsonlg2dk2y1ijsuhplfdw3im" columns="user_id" ref-table="user" ref-schema="" ref-catalog="database2" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_rsonlg2dk2y1ijsuhplfdw3im" unique="false" columns="user_id"/>
+    </table>
+    <table name="user" schema="" catalog="database2" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_rsonlg2dk2y1ijsuhplfdw3im" table="download_information" schema="" catalog="database2" columns="user_id"/>
+    </table>
+  </data-source>
+</component>
